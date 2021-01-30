@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  ###################################
+  ## Plex-playlists
+  ###################################
+  plex-metadata-exporter:
+    build: .
+    container_name: plex-metadata-exporter
+    restart: unless-stopped
+    volumes:
+      - /path/to/plex/library:/media
+    environment:
+      # address with port
+      - PLEX_ADDRESS=https://IP:PORT
+      # Plex-token from
+      - X_PLEX_TOKEN=sOmEpL3XT0k3n1234
+      # absolute path to the root folder - in this case absolute in the docker volume
+      - PLEX_ROOT_FOLDER=/media
+      # the file ending naming scheme
+      - FILE_ENDING_PATTERN=meta_data_naming_scheme
+      # when the job should run
+      - CRON_STRING=*/15 * * * *

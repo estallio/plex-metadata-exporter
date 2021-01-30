@@ -1,0 +1,15 @@
+{
+  "name": "plex-metadata-exporter",
+  "version": "1.0.0",
+  "description": "Saves json and xml metadata as well as cover and art of movies alongside the files in a plex library.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Leonhard Esterbauer",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "dotenv": "^8.2.0"
+  }
+}
