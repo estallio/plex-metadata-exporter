@@ -8,11 +8,14 @@ ENV TZ=Europe/Vienna
 RUN apt-get update \
     && apt-get install -y cron
 
-# copy start-up script
-COPY ./container_start_up.sh /container_start_up.sh
+# copy scripts
+COPY scripts /scripts
 
-# set execution rights on the start-up script
-RUN chmod +x /container_start_up.sh
+# set execution rights on the scripts
+RUN chmod +x /scripts/*.sh
+
+# specify location of the log file for the cron job
+ENV LOG_FILE=/var/log/cron.log
 
 # create app directory
 RUN mkdir -p /usr/src/app
@@ -26,6 +29,9 @@ RUN npm install
 COPY app /usr/src/app
 
 # start the start-up script
-ENTRYPOINT ["/container_start_up.sh"]
+ENTRYPOINT ["/scripts/container_start_up.sh"]
+
+# start the cron script
+CMD ["cron"]
 
 

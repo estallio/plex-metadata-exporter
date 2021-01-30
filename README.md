@@ -16,7 +16,7 @@ npm install
 npm run start
 ```
 
-Alternatively, you can also use the Docker image, which saves the whole library at a regular basis - once a week on monday at 05:00 am by default. The basic usage can be seen in the sample docker-compose file.
+Alternatively, you can also use the Docker image, which saves the whole library at a regular basis - once a week on monday at 05:00 am by default. The basic usage can be seen in the sample docker-compose file. The docker-compose file also provides example commands for running the whole export only once or clean up all files.
 
 ### Configuration
 

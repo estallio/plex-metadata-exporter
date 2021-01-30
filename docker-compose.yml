@@ -21,3 +21,9 @@ services:
       - FILE_ENDING_PATTERN=meta_data_naming_scheme
       # when the job should run
       - CRON_STRING=*/15 * * * *
+      # if you want to run run the whole script only once, override CMD with "once"
+      # command: once
+      # if you want to clean up all meta_data files, ovverride CMD with "cleanup"
+      # command: cleanup
+      # default command specified in the Dockerfile
+      # command: cron

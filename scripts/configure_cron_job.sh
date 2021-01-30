@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
-# relay env-variables, so apps executed with cron can also access these
-printenv > /etc/environment
-
-# path to logfile
-LOG_FILE=/var/log/cron.log
+echo "Configuring cron job..."
 
 # ensure the log file exists
 touch "$LOG_FILE"
@@ -17,7 +13,7 @@ then
 fi
 
 # add a cronjob in a new crontab
-echo "$CRON_STRING /usr/local/bin/node /usr/src/app/index.js >> $LOG_FILE 2>&1" > /etc/crontab
+echo "$CRON_STRING echo 'Exporting metadata...' && /usr/local/bin/node /usr/src/app/index.js >> $LOG_FILE 2>&1" > /etc/crontab
 
 # register the new crontab
 crontab /etc/crontab
